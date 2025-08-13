@@ -4,7 +4,7 @@ import Link from 'next/link';
 const Navbar = () => {
   return (
     <>
-      <header className="sticky top-0 flex items-center justify-between bg-white/50 p-4 backdrop-blur">
+      <header className="sticky top-0 flex items-center justify-between bg-white/50 p-4 backdrop-blur border-b-2 mb-8 border-black">
       <Link href="/">
         <p className="select-none font-serif text-2xl font-medium">
           Confessions
@@ -21,6 +21,7 @@ const Navbar = () => {
         </div>
       </div>
     </header>
+
     </>
   )
 }

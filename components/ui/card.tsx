@@ -1,18 +1,18 @@
 import React from 'react'
 import { confessionType } from '../Home'
-
+import img from '@/public/img2.png'
+import Image from 'next/image'
 const Card = ({data}: {data: confessionType}) => {
-  console.log("Data is: ", data)
   return (
     <>
       
-<a href="#" className="flex flex-col items-center bg-white border border-gray-900 rounded-lg shadow-sm md:flex-row md:max-w-xl hover:bg-gray-100">
+<a href="#" className="flex flex-col items-center bg-white border border-gray-900 rounded-lg shadow-sm md:flex-row md:max-w-xl h-48 hover:bg-gray-100">
     {/* <img className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="/docs/images/blog/image-4.jpg" alt=""> */}
     <div className="flex flex-col justify-between p-4 leading-normal">
-        <div> 
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Annonymous</h5>
+        <div className='flex items-center gap-3'> 
+           <Image className='w-14 h-14 bg-transparent border-1 border-black rounded-full' src={img} alt='not found' /><h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Annonymous</h5>
         </div>
-        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{data.text}</p>
+        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{data.text.length > 135 ? data.text.length : data.text}</p>
         <div className='w-full flex gap-6'>
           <div className='flex gap-1'>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
