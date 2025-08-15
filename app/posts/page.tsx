@@ -36,17 +36,16 @@ const Page = () => {
   return (
     <>
     <Navbar/> 
-    <div className='px-20 py-10'>
+    <div className='md:px-20 md:py-10' style={{padding: '6px 12px'}}>
       
       <textarea 
         name="" 
         id=""
         value={message}
-        className='border border-black px-5 py-3 text-black font-bold'
+        className='border border-black px-2 py-3 text-black font-medium rounded-xl w-full'
         placeholder='Enter your amazing confession'
-        onChange={(e)=> setmessage(e.target.value)}
-    />
-      <Button disabled={loading} className='' onClick={newPost}>Click to Post</Button>
+        onChange={(e)=> setmessage(e.target.value)}></textarea>
+      <Button disabled={loading} className='my-2' onClick={newPost} >Confess</Button>
       <div>
         <div className='grid sm:grid-cols-1 md:grid-cols-3 gap-4'>
             {confession ? confession.map((con, index) => {
@@ -57,7 +56,7 @@ const Page = () => {
                 );
             }): <div>loading</div>}
         </div>
-        </div>
+      </div>
     </div>
     </>
   )
