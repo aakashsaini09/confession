@@ -36,7 +36,7 @@ const Page = () => {
   return (
     <>
     <Navbar/> 
-    <div className='md:px-20 md:py-10' style={{padding: '6px 12px'}}>
+    <div className='px-[12px] py-[6px] sm:px-8 sm:py-4 md:px-20 md:py-10'>
       
       <textarea 
         name="" 

@@ -52,9 +52,13 @@ export default function Home() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
-              className="px-8 py-3 rounded-full bg-black text-white font-semibold shadow-lg focus:outline-none cursor-pointer"
+              className="flex px-8 py-3 mx-auto rounded-full bg-black text-white font-semibold shadow-lg focus:outline-none cursor-pointer"
             >
-              Confessions 
+              Confes <span className='text-blue-600 font-bold'>sions</span> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 text-blue-600">
+  <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+</svg>
+
+
             </motion.button>
           </Link>
         </motion.div>
@@ -91,9 +95,12 @@ export default function Home() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => router.push('/posts')}
-          className="mt-8 px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-full shadow-lg transition-all duration-200"
+          className="flex mt-8 px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-full shadow-lg transition-all duration-200"
         >
-          Confessions
+          Confessions <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
+  <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
+</svg>
+
         </motion.button>
       </div>
 
