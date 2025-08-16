@@ -4,20 +4,20 @@ import Link from 'next/link';
 const Navbar = () => {
   return (
     <>
-      <header className="sticky top-0 flex items-center justify-between bg-white/50 p-4 backdrop-blur mb-0">
+      <header className="sticky top-0 flex items-center justify-between bg-white/50 p-4 md:px-6 backdrop-blur mb-0">
       <Link href="/">
         <p className="select-none font-serif text-2xl font-medium">
           KUK Confessions
         </p>
       </Link>
       <div className="flex items-center space-x-6">
-        <Link href="/posts">
+        <div>
           <PlusIcon className="h-6 w-6 cursor-pointer" />
-        </Link>
+        </div>
         <div className="cursor-pointer rounded-full bg-slate-400/20 p-2 hover:bg-slate-400/30">
-          <Link href="/search">
+          <div>
             <MagnifyingGlassIcon className="h-6 w-6" />
-          </Link>
+          </div>
         </div>
       </div>
     </header>

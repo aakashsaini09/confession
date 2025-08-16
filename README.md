@@ -18,10 +18,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-# File Tree: confession
-
-Generated on: 8/16/2025, 4:12:49 PM
-Root path: `/home/aakash-saini/data/webdevlopment/projects/confession`
+# File Tree: Confession
 
 ```
 ├── 📁 .git/ 🚫 (auto-hidden)
