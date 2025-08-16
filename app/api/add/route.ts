@@ -12,6 +12,7 @@ export async function POST(req: Request) {
       })
     }
     const newConfession: Confession = {
+      _id: '',
       text,
       likes: 0,
       dislikes: 0,

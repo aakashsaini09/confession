@@ -1,6 +1,9 @@
 'use client'               
 import { motion } from 'framer-motion'
 import Link from 'next/link';
+import Image from 'next/image';
+import mobileImg from '@/public/kuk-sm.png'
+import pcImg from '@/public/kuk-pc.jpg'
 // import { Button } from "@/components/ui/button";
 // import Card from "@/components/ui/card";
 // "url('https://wallpapers.com/images/hd/hidden-2u0aiye7srpngc7z.jpg')",
@@ -16,8 +19,8 @@ export default function Home() {
     <div className="relative min-h-screen flex flex-col items-center justify-center text-white font-serif">
       {/* Background Image */}
       <div className="absolute inset-0">
-        <img src="https://images.careerindia.com/college-photos/908/ku-campus_1463740656.jpg" alt="KUK Campus" className="hidden md:block w-full h-full object-cover" />
-        <img src="https://www.kukonline.in/images/kuk_college.png" alt="KUK Campus" className="sm:hidden block w-full h-full object-cover" />
+        <Image src={pcImg} width={100} height={100} alt="KUK Campus" className="hidden md:block w-full h-full object-cover" />
+        <Image src={mobileImg} width={100} height={100} alt="KUK Campus" className="sm:hidden block w-full h-full object-cover" />
         <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" /> 
         {/* dark overlay for readability */}
       </div>
