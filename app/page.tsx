@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link';
 import Image from 'next/image';
-import mobileImg from '@/public/kuk-sm.png'
+import mobileImg from '@/public/hacker.jpg'
 import pcImg from '@/public/kuk-pc.jpg'
 // import { Button } from "@/components/ui/button";
 // import Card from "@/components/ui/card";
@@ -20,8 +20,8 @@ export default function Home() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image src={pcImg} width={100} height={100} alt="KUK Campus" className="hidden md:block w-full h-full object-cover" />
-        <Image src={mobileImg} width={100} height={100} alt="KUK Campus" className="sm:hidden block w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" /> 
+        <Image src={mobileImg} width={60} alt="KUK Campus" className="sm:hidden block w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-black/30 md:bg-black/60 backdrop:blur-xs md:backdrop-blur-sm" /> 
         {/* dark overlay for readability */}
       </div>
 
@@ -39,7 +39,7 @@ export default function Home() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.6 }}
-        className="text-lg md:text-xl mb-10 text-gray-200 text-center max-w-xl relative z-10"
+        className="text-xs md:text-xl mb-10 text-gray-200 text-center max-w-lg md:max-w-xl relative z-10"
       >
         Share your secrets, thoughts, and experiences anonymously with your coursemates.  
         <span className="font-semibold text-white"> Your identity stays hidden.</span>
@@ -52,7 +52,7 @@ export default function Home() {
             key={i}
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.98 }}
-            className={`rounded-2xl w-36 bg-gradient-to-r ${course.color} p-[2px]`}
+            className={`rounded-2xl w-[70vw] md:w-36 bg-gradient-to-r ${course.color} p-[2px] `}
           >
             <div className="bg-black/70 backdrop-blur-xl rounded-2xl p-8 h-full flex flex-col items-center justify-center cursor-pointer shadow-xl">
               <h2 className="text-2xl font-bold">{course.name}</h2>
@@ -68,7 +68,7 @@ export default function Home() {
       </div>
 
       {/* Footer */}
-      <p className="mt-12 text-gray-400 text-sm text-center relative z-10">
+      <p className="mt-12 text-gray-400 text-sm text-center relative z-10 py-4 md:py-2">
         Made for Kurukshetra University students ❤️
       </p>
     </div>

@@ -1,5 +1,5 @@
 export interface Confession {
-  _id: string;
+  _id?: string;
   text: string;
   likes: number;
   dislikes: number;
