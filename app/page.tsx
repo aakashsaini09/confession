@@ -10,10 +10,11 @@ import pcImg from '@/public/kuk-pc.jpg'
 
 export default function Home() {
   const courses = [
+  { name: "ALL", color: "from-yello-300 to-orange-300" },
   { name: "MCA", color: "from-purple-500 to-indigo-500" },
   { name: "MBA", color: "from-pink-500 to-red-500" },
   { name: "LLB", color: "from-green-500 to-emerald-500" },
-  { name: "BCA", color: "from-blue-500 to-cyan-500" },
+  // { name: "BCA", color: "from-blue-500 to-cyan-500" },
 ];
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center text-white font-serif">
@@ -46,6 +47,7 @@ export default function Home() {
       </motion.p>
 
       {/* Course Cards */}
+      <p>All are same for now</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 px-6 max-w-6xl relative z-10">
         {courses.map((course, i) => (
           <motion.div
