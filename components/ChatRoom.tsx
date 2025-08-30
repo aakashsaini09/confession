@@ -2,7 +2,8 @@
 
 import { useEffect, useState, useRef } from "react";
 import { io, Socket } from "socket.io-client";
-
+import Image from "next/image";
+import svg from '@/public/incognito.svg'
 let socket: Socket;
 
 type Props = {
@@ -19,8 +20,12 @@ export default function ChatRoom({ onUsersCountChange }: Props) {
   const [input, setInput] = useState("");
   const [userId, setUserId] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const [userIn, setuserIn] = useState(false)
   useEffect(() => {
-    fetch('/api/socket')
+    setuserIn(true)
+    setTimeout(() => {
+      setuserIn(false)
+    }, 5000);
   }, [])
   
   useEffect(() => {
@@ -64,6 +69,17 @@ export default function ChatRoom({ onUsersCountChange }: Props) {
   };
 
   return (
+    <>
+   {userIn && (
+  <div className="absolute top-2 flex left-1/2 -translate-x-1/2 z-50 
+                  px-4 py-2 mb-4 text-sm text-red-500 rounded-lg 
+                 shadow-lg gap-2"
+       role="alert">
+        <Image src={svg} width={40} alt="" />
+    <span className="font-medium my-auto">Messages will disappear soon.</span> <p className="my-auto">No messages being stored!!</p>
+  </div>
+)}
+
     <div className="flex flex-col">
       <div className="flex h-[67vh] flex-col justify-between w-full max-w-[95vw] md:max-w-[85vw] mx-auto border border-gray-500 rounded-xl shadow-lg bg-white">
         {/* Messages area */}
@@ -73,7 +89,7 @@ export default function ChatRoom({ onUsersCountChange }: Props) {
             return (
               <div
                 key={i}
-                className={`p-3 rounded-lg max-w-[50%] break-words ${
+                className={`p-3 rounded-lg max-w-[45%] break-words ${
                   mine
                     ? "bg-blue-500 text-white ml-auto"
                     : "bg-gray-300 text-black mr-auto"
@@ -107,5 +123,6 @@ export default function ChatRoom({ onUsersCountChange }: Props) {
         </div>
       </div>
     </div>
+    </>
   );
 }
