@@ -24,25 +24,25 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
     io.on("connection", (socket) => {
       liveUsers++;
-    //   console.log("✅ User connected:", socket.id);
+      console.log("✅ User connected:", socket.id);
 
       io?.emit("users-count", liveUsers);
 
       socket.on("chat-message", (text: string) => {
         const message = { id: socket.id, text };
-        // console.log("💬 Message:", message);
+        console.log("💬 Message:", message);
         io?.emit("chat-message", message);
       });
 
       socket.on("disconnect", () => {
         liveUsers--;
-        // console.log("❌ User disconnected:", socket.id);
+        console.log("❌ User disconnected:", socket.id);
         io?.emit("users-count", liveUsers);
       });
     });
 
     socketWithServer.server.io = io;
-    // console.log("🚀 Socket.io server started");
+    console.log("🚀 Socket.io server started");
   }
 
   res.end();

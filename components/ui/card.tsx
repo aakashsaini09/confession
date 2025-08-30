@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import img from '@/public/img2.png'
 import Image from 'next/image'
 import { Confession } from '@/types'
-import { formatDistanceToNow, format, differenceInMinutes, differenceInHours } from "date-fns";
+import { format, differenceInMinutes, differenceInHours } from "date-fns";
 import axios from 'axios';
 const Card = ({ data }: { data: Confession }) => {
   const fullText = data?.text ?? ''
@@ -17,36 +17,38 @@ const Card = ({ data }: { data: Confession }) => {
     window.dispatchEvent(new CustomEvent('confession:open', { detail: data }))
   }
 
-  function dateFormater(
-    input: string | Date | { createdAt: string } | undefined | null
-  ): string {
-    if (!input) return '';
+ function dateFormater(
+  input: string | Date | { createdAt: string } | undefined | null
+): string {
+  if (!input) return '';
 
-    let dateObj: Date | null = null;
+  let dateObj: Date | null = null;
 
-    if (input instanceof Date) {
-      dateObj = input;
-    } else {
-      const createdAt = typeof input === 'string' ? input : input?.createdAt;
-      if (!createdAt) return '';
-      dateObj = new Date(createdAt);
-    }
-
-    const minutesDiff = differenceInMinutes(new Date(), dateObj);
-    const hoursDiff = differenceInHours(new Date(), dateObj);
-
-    if (minutesDiff < 60) {
-      return formatDistanceToNow(dateObj, { addSuffix: true }); // "5 minutes ago"
-    }
-
-    if (hoursDiff < 24) {
-      // Show in hours if less than a day old
-      return formatDistanceToNow(dateObj, { addSuffix: true }); // "5 hours ago"
-    }
-
-    // Otherwise show full date
-    return format(dateObj, 'hh:mma MMM yyyy');
+  if (input instanceof Date) {
+    dateObj = input;
+  } else {
+    const createdAt = typeof input === 'string' ? input : input?.createdAt;
+    if (!createdAt) return '';
+    dateObj = new Date(createdAt);
   }
+
+  const now = new Date();
+  const minutesDiff = differenceInMinutes(now, dateObj);
+  const hoursDiff = differenceInHours(now, dateObj);
+
+  // Case 1: Show "x minutes ago" only if ≤ 5 minutes
+  if (minutesDiff <= 5) {
+    return minutesDiff <= 1 ? "1 minute ago" : `${minutesDiff} minutes ago`;
+  }
+
+  // Case 2: Show "Today, hh:mm a" if within 24 hours
+  if (hoursDiff < 24 && dateObj.getDate() === now.getDate()) {
+    return `Today, ${format(dateObj, 'hh:mm a')}`;
+  }
+
+  // Case 3: Older than 24 hours → show only date
+  return format(dateObj, 'dd MMM yyyy');
+}
   const finalValue = dateFormater(data.createdAt)
   const likeDislikeFunction = async (id: string, operation: boolean, e?: React.MouseEvent<HTMLDivElement>) => {
     e?.preventDefault();

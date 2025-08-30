@@ -27,8 +27,8 @@ export async function PUT(req: NextRequest, ctx: unknown) {
       { returnDocument: "after" }
     );
 
-    if (!result || !result.value) {
-      return NextResponse.json({ message: "Confession not found!" }, { status: 404 });
+    if (!result) {
+      return NextResponse.json({ message: "Confession not found!", result: result }, { status: 404 });
     }
 
     return NextResponse.json(

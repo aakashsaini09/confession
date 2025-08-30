@@ -19,7 +19,10 @@ export default function ChatRoom({ onUsersCountChange }: Props) {
   const [input, setInput] = useState("");
   const [userId, setUserId] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
-
+  useEffect(() => {
+    fetch('/api/socket')
+  }, [])
+  
   useEffect(() => {
     socket = io({
       path: "/api/socket",
@@ -70,7 +73,7 @@ export default function ChatRoom({ onUsersCountChange }: Props) {
             return (
               <div
                 key={i}
-                className={`p-3 rounded-lg max-w-[75%] break-words ${
+                className={`p-3 rounded-lg max-w-[50%] break-words ${
                   mine
                     ? "bg-blue-500 text-white ml-auto"
                     : "bg-gray-300 text-black mr-auto"
