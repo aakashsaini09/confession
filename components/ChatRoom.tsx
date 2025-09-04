@@ -73,7 +73,7 @@ export default function ChatRoom({ onUsersCountChange }: Props) {
    {userIn && (
   <div className="absolute top-2 flex left-1/2 -translate-x-1/2 z-50 
                   px-4 py-2 mb-4 text-sm text-red-500 rounded-lg 
-                 shadow-lg gap-2"
+                 shadow-md gap-2"
        role="alert">
         <Image src={svg} width={40} alt="" />
     <span className="font-medium my-auto">Messages will disappear soon.</span> <p className="my-auto">No messages being stored!!</p>

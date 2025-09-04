@@ -33,18 +33,22 @@ const Confessions = () => {
        }, [])
     const newPost = async () => {
         setloading(true)
-        try {
-
-          const res = await axios.post("/api/add", {
-              text: message
-          }, { 
-              headers: {
-                  'Content-Type': 'application/json'
-              }
-          });
-          console.log("res: ", res)
-        } catch (error) {
-          console.log("Error while uploading (frontend): ", error)
+        if(message.length < 5){
+          alert("Confession must have atleast 5 character")
+        }else{
+          try {
+  
+            const res = await axios.post("/api/add", {
+                text: message
+            }, { 
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            console.log("res: ", res)
+          } catch (error) {
+            console.log("Error while uploading (frontend): ", error)
+          }
         }
     getAll()
     setmessage("")

@@ -11,15 +11,11 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     server: HTTPServer & { io?: SocketIOServer };
   };
 
+  // if server not started, create it once
   if (!socketWithServer.server.io) {
-    const httpServer: HTTPServer = socketWithServer.server;
-
-    io = new SocketIOServer(httpServer, {
+    io = new SocketIOServer(socketWithServer.server, {
       path: "/api/socket",
-      cors: {
-        origin: "*",
-        methods: ["GET", "POST"],
-      },
+      cors: { origin: "*", methods: ["GET", "POST"] },
     });
 
     io.on("connection", (socket) => {
@@ -45,5 +41,5 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     console.log("🚀 Socket.io server started");
   }
 
-  res.end();
+  res.end(); // nothing to render
 }
