@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { EdgeStoreProvider } from '../lib/edgestore';
 import {
   ClerkProvider,
   // SignInButton,
@@ -46,7 +47,8 @@ export default function RootLayout({
         <SignedIn>
           <UserButton />
         </SignedIn> */}
-          {children}
+
+        <EdgeStoreProvider>{children}</EdgeStoreProvider> 
         </body>
       </ClerkProvider>
     </html>
