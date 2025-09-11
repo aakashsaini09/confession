@@ -10,10 +10,10 @@ import pcImg from '@/public/kuk-pc.jpg'
 
 export default function Home() {
   const courses = [
-  { name: "ALL", color: "from-yello-300 to-orange-300" },
-  { name: "MCA", color: "from-purple-500 to-indigo-500" },
-  { name: "MBA", color: "from-pink-500 to-red-500" },
-  { name: "LLB", color: "from-green-500 to-emerald-500" },
+  { name: "Confessions", color: "from-yello-300 to-orange-300", url:"/confess" },
+  { name: "Notes", color: "from-purple-500 to-indigo-500", url:"/notes" },
+  { name: "Privious Year", color: "from-pink-500 to-red-500", url:"/previous-year" },
+  { name: "Posts", color: "from-green-500 to-emerald-500", url:"/Posts" },
   // { name: "BCA", color: "from-blue-500 to-cyan-500" },
 ];
   return (
@@ -33,7 +33,7 @@ export default function Home() {
         transition={{ duration: 0.6 }}
         className="text-4xl md:text-6xl pt-8 font-extrabold mb-4 text-center relative z-10"
       >
-        KUK Confessions
+        The KUK Hub
       </motion.h1>
 
       <motion.p
@@ -42,7 +42,7 @@ export default function Home() {
         transition={{ delay: 0.2, duration: 0.6 }}
         className="text-xs md:text-xl mb-10 text-gray-200 text-center max-w-lg md:max-w-xl relative z-10"
       >
-        Share your secrets, thoughts, and experiences anonymously with your coursemates.  
+        Your space at KUK to study smarter, share freely, and connect with your peers.  
         <span className="font-semibold text-white"> Your identity stays hidden.</span>
       </motion.p>
 
@@ -54,11 +54,11 @@ export default function Home() {
             key={i}
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.98 }}
-            className={`rounded-2xl w-[70vw] md:w-36 bg-gradient-to-r ${course.color} p-[2px] `}
+            className={`rounded-2xl w-[70vw] md:w-56 bg-gradient-to-r ${course.color} p-[2px] `}
           >
             <div className="bg-black/70 backdrop-blur-xl rounded-2xl p-8 h-full flex flex-col items-center justify-center cursor-pointer shadow-xl">
               <h2 className="text-2xl font-bold">{course.name}</h2>
-              <Link href={`/posts`}>
+              <Link href={course.url}>
               {/* <Link href={`/confessions/${course.name.toLowerCase()}`}> */}
                 <button className="mt-6 px-5 py-2 bg-white text-black cursor-pointer rounded-full font-semibold hover:bg-gray-200 transition">
                   Enter
@@ -70,7 +70,7 @@ export default function Home() {
       </div>
 
       {/* Footer */}
-      <p className="mt-12 text-gray-400 text-sm text-center relative z-10 py-4 md:py-2">
+      <p className="mt-28 text-gray-200 text-sm text-center relative z-10 py-4 md:py-2">
         Made for Kurukshetra University students ❤️
       </p>
     </div>
