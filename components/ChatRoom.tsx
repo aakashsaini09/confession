@@ -16,6 +16,7 @@ interface Message {
 }
 
 export default function ChatRoom({ onUsersCountChange }: Props) {
+
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [userId, setUserId] = useState("");
@@ -27,7 +28,14 @@ export default function ChatRoom({ onUsersCountChange }: Props) {
       setuserIn(false)
     }, 5000);
   }, [])
-  
+  const backgroundStyle = {
+    backgroundImage: "url('/chatbg.webp')",
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    minHeight: '80vh',
+  };
+    
   useEffect(() => {
     socket = io({
       path: "/api/socket",
@@ -81,7 +89,7 @@ export default function ChatRoom({ onUsersCountChange }: Props) {
 )}
 
     <div className="flex flex-col">
-      <div className="flex h-[67vh] flex-col justify-between w-full max-w-[95vw] md:max-w-[85vw] mx-auto border border-gray-500 rounded-xl shadow-lg bg-blue-500">
+      <div style={backgroundStyle} className="flex h-[67vh] flex-col justify-between w-full max-w-[95vw] md:max-w-[85vw] mx-auto border border-gray-500 rounded-xl shadow-lg">  
         {/* Messages area */}
         <div className="flex-1 overflow-y-auto p-4 space-y-3">
           {messages.map((msg, i) => {
@@ -89,10 +97,10 @@ export default function ChatRoom({ onUsersCountChange }: Props) {
             return (
               <div
                 key={i}
-                className={`p-3 rounded-lg max-w-[45%] break-words ${
+                className={`p-3 rounded-lg w-fit sm:max-w-[70%] md:max-w-[40%] break-words ${
                   mine
-                    ? "bg-blue-500 text-white ml-auto"
-                    : "bg-gray-300 text-black mr-auto"
+                    ? "bg-[#074943] text-white ml-auto"
+                    : "bg-[#1F2D36] text-white mr-auto"
                 }`}
               >
                 {msg.text}

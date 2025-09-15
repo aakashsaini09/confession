@@ -137,7 +137,7 @@ export default function NotesPage() {
         {notes.slice(0).reverse().map((note, index) => (
           <div
             key={index}
-            className="bg-[#141414] p-6 rounded-2xl shadow-md hover:shadow-xl transition border flex flex-col justify-between container"
+            className="bg-[#141414] p-6 rounded-2xl shadow-md min-h-48 hover:shadow-xl transition border flex flex-col justify-between container"
           >
             <div className="flex items-center gap-3 mb-4 justify-between">
               <div className="flex items-center gap-3">
