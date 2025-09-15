@@ -113,7 +113,7 @@ const semesters = [
                     <a
                       href={subj.link}
                       target='_blank'
-                      className="flex py-3  px-3 text-center items-center justify-center gap-3 bg-green-600 text-white rounded-lg text-sm font-semibold hover:bg-green-500"
+                      className="flex py-3  px-3 text-center items-center justify-center gap-3 bg-green-600 text-white rounded-lg text-md font-semibold hover:bg-green-500"
                     >
                       Download <Download/>
                     </a>

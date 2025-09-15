@@ -13,7 +13,7 @@ export default function Home() {
   { name: "Confessions", color: "from-yello-300 to-orange-300", url:"/confess" },
   { name: "Notes", color: "from-purple-500 to-indigo-500", url:"/notes" },
   { name: "Privious Year", color: "from-pink-500 to-red-500", url:"/previous-year" },
-  { name: "Posts", color: "from-green-500 to-emerald-500", url:"/Posts" },
+  { name: "Posts", color: "from-green-500 to-emerald-500", url:"/posts" },
   // { name: "BCA", color: "from-blue-500 to-cyan-500" },
 ];
   return (
