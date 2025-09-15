@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Users } from 'lucide-react';
 import ChatRoom from "@/components/ChatRoom";
 import Confessions from "@/components/Confessions";
 import Navbar from "@/components/Navbar";
@@ -24,8 +25,8 @@ const Page = () => {
               KUK Confessions
             </p>
           </Link>
-          <span className="text-sm font-medium text-blue-600">
-            👥 {chatUsers} online
+          <span className="text-sm font-medium text-white flex">
+            <Users /> {chatUsers} online
           </span>
         </header>
       ) : (

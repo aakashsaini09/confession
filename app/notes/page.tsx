@@ -90,7 +90,7 @@ export default function NotesPage() {
           <Dialog>
             <form>
               <DialogTrigger asChild>
-                <Button variant="outline" className="my-10">Upload Notes <FileText className="w-6 h-6 text-white" /></Button>
+                <Button variant="outline" className={`${loading ? 'bg-gray-200 text-gray-700 cursor-not-allowed my-10' : 'cursor-pointer my-10'}`}>Upload Notes <FileText className="w-6 h-6 text-white" /></Button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-[425px] bg-accent">
                 <DialogHeader>
@@ -137,12 +137,12 @@ export default function NotesPage() {
         {notes.slice(0).reverse().map((note, index) => (
           <div
             key={index}
-            className="bg-gray-600 p-6 rounded-2xl shadow-md hover:shadow-xl transition border flex flex-col justify-between"
+            className="bg-[#141414] p-6 rounded-2xl shadow-md hover:shadow-xl transition border flex flex-col justify-between container"
           >
             <div className="flex items-center gap-3 mb-4 justify-between">
               <div className="flex items-center gap-3">
                 <FileText className="w-6 h-6 text-blue-600" />
-                <h2 className="text-base font-medium font-mono font-">{note.title}</h2>
+                <h2 className="text-base font-medium font-mono ">{note.title}</h2>
               </div>
               <p className="min-w-3 font-sm flex">{formatFileSize(note.size)}</p>
             </div>
