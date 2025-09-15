@@ -34,12 +34,10 @@ export default function NotesPage() {
   const [Progress, setProgress] = useState(0)
   const [title, settitle] = useState("")
   const saveToMongo = (res: responseFromEdgeStore) => {
-    setloading(true)
     newPost(res)
     console.log("response is: ", res)
   }
   const newPost = async (response: responseFromEdgeStore) => {
-    setloading(true)
     if (title.length < 5) {
       alert("Title must have atleast 5 character")
       setloading(false)
@@ -53,7 +51,6 @@ export default function NotesPage() {
         setFile(undefined)
         setProgress(0);
         getAll()
-        document.getElementById("closeBtn")?.click()
       } catch (error) {
         console.log("Error while uploading (frontend): ", error)
         setloading(false)
@@ -71,6 +68,16 @@ export default function NotesPage() {
   useEffect(() => {
     getAll()
   }, [])
+  function formatFileSize(sizeInBytes: number): string {
+  const KB = 1024;
+  const MB = 1024 * 1024;
+
+  if (sizeInBytes < MB) {
+    return `${(sizeInBytes / KB).toFixed(0)} KB`;
+  } else {
+    return `${(sizeInBytes / MB).toFixed(2)} MB`;
+  }
+}
   return (
     <div className="mx-auto px-6 py-12 bg-black text-white h-auto w-full font-serif">
       <div className="mb-8 flex w-full justify-between items-center px-10">
@@ -89,7 +96,7 @@ export default function NotesPage() {
                 <DialogHeader>
                   <DialogTitle>Upload Notes</DialogTitle>
                   <DialogDescription>
-                    Please make sure to add relevent title.
+                    Please make sure to upload a relevant title and notes only. 
                   </DialogDescription>
                 </DialogHeader>
                 <div className="grid gap-4">
@@ -106,31 +113,38 @@ export default function NotesPage() {
                   </div>: <></>}
                 </div>
                 <DialogFooter>
-                  <DialogClose asChild>
-                    <Button id="closeBtn" variant="outline">Cancel</Button>
+                  <DialogClose asChild disabled={loading}>
+                    <Button id="closeBtn" variant="outline" className={`${loading ? 'bg-gray-200 text-gray-700 cursor-not-allowed' : ''}`}>Cancel</Button>
                   </DialogClose>
                   <Button onClick={async () => {
                     if (file) {
                       const res = await edgestore.publicFiles.upload({
-                        file, onProgressChange: (progress) => { setProgress(progress) },
+                        file, onProgressChange: (progress) => { 
+                          setloading(true);
+                          setProgress(progress) },
                       });
                       saveToMongo(res)
-                    } }}>Upload</Button>    
+                    } }}
+                    disabled={loading}
+                    className={`${loading ? 'bg-gray-200 text-gray-700 cursor-not-allowed' : 'cursor-pointer'}`}>Upload</Button>    
                 </DialogFooter>
               </DialogContent>
             </form>
           </Dialog>
         </div>
       </div>
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 container mx-auto">
-        {notes.map((note, index) => (
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 container mx-auto sm:px-3 md:px-7">
+        {notes.slice(0).reverse().map((note, index) => (
           <div
             key={index}
             className="bg-gray-600 p-6 rounded-2xl shadow-md hover:shadow-xl transition border flex flex-col justify-between"
           >
-            <div className="flex items-center gap-3 mb-4">
-              <FileText className="w-6 h-6 text-blue-600" />
-              <h2 className="text-lg font-semibold">{note.title}</h2>
+            <div className="flex items-center gap-3 mb-4 justify-between">
+              <div className="flex items-center gap-3">
+                <FileText className="w-6 h-6 text-blue-600" />
+                <h2 className="text-base font-medium font-mono font-">{note.title}</h2>
+              </div>
+              <p className="min-w-3 font-sm flex">{formatFileSize(note.size)}</p>
             </div>
             <a href={note.url} download target="_blank" className="flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition">
               <Download className="w-4 h-4" />

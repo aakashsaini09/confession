@@ -61,7 +61,7 @@ const Confessions = () => {
         name="" 
         id=""
         value={message}
-        className='border border-black px-2 py-3 text-black font-medium rounded-xl w-full'
+        className='border border-gray-100 bg-slate-200 px-2 py-3 text-gray-800 font-medium rounded-xl w-full'
         placeholder='Enter your amazing confession'
         onChange={(e)=> setmessage(e.target.value)}></textarea>
         <div className='flex justify-between'>

@@ -17,7 +17,7 @@ const Page = () => {
 
   return (
     <>
-      <div className="mx-auto px-6 py-12 bg-black text-white h-screen w-full font-serif">
+      {/* <div className="mx-auto px-6 py-12 bg-black text-white h-screen w-full font-serif">
       <div className="mb-8 flex w-full justify-between items-center px-10">
         <h1 className="text-2xl font-medium cursor-pointer"><Link href={'/'}>The KUK Hub</Link></h1>
         <h1 className="text-3xl font-bold text-white">📚 MCA Previous Year Papers </h1>
@@ -42,6 +42,32 @@ const Page = () => {
         ))}
       </div>
      
+    </div> */}
+    <div className='h-auto w-full'>
+      <div className='h-[100vh] bg-green-400 w-full flex justify-center items-center'>
+        <div className='flex flex-col justify-center gap-6 transition-all duration-1000 scroll-smooth'> 
+          <a href="#2021">Go to 2021</a>
+          <a href="#2022">Go to 2022</a>
+          <a href="#2023">Go to 2023</a>
+          <a href="#2024">Go to 2024</a>
+          <a href="#2025">Go to 2025</a>
+        </div>
+      </div>
+      <div id='2021' className='h-[100vh] bg-red-400 w-full flex justify-center items-center'>
+        This is element
+      </div>
+      <div id='2022' className='h-[100vh] bg-yellow-400 w-full flex justify-center items-center'>
+        This is element
+      </div>
+      <div id='2023' className='h-[100vh] bg-blue-400 w-full flex justify-center items-center'>
+        This is element
+      </div>
+      <div id='2024' className='h-[100vh] bg-purple-400 w-full flex justify-center items-center'>
+        This is element
+      </div>
+      <div id='2025' className='h-[100vh] bg-black w-full flex justify-center items-center'>
+        This is element
+      </div>
     </div>
     </>
   )

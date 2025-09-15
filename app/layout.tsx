@@ -10,6 +10,7 @@ import {
   // SignedOut,
   // UserButton,
 } from '@clerk/nextjs'
+import { ThemeProvider } from "@/components/theme-provider";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -48,7 +49,15 @@ export default function RootLayout({
           <UserButton />
         </SignedIn> */}
 
-        <EdgeStoreProvider>{children}</EdgeStoreProvider> 
+        <EdgeStoreProvider> 
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider></EdgeStoreProvider> 
         </body>
       </ClerkProvider>
     </html>

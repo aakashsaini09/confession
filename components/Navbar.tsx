@@ -4,7 +4,7 @@ import Link from 'next/link';
 const Navbar = () => {
   return (
     <>
-      <header className="sticky top-0 flex items-center justify-between bg-white/50 p-4 md:px-6 backdrop-blur mb-0">
+      <header className="sticky top-0 flex items-center justify-between bg-black/50 p-4 md:px-6 backdrop-blur mb-0">
       <Link href="/">
         <p className="select-none font-serif text-2xl font-medium">
           KUK Confessions

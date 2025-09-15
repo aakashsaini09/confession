@@ -18,13 +18,13 @@ const Page = () => {
     <>
       {activeTab === "chat" ? (
         // Minimal header shown ONLY for Chat tab
-        <header className="sticky top-0 z-50 flex items-center justify-between bg-white/50 p-4 md:px-6 backdrop-blur">
+        <header className="sticky top-0 z-50 flex items-center justify-between bg-blue-800 p-4 md:px-6 backdrop-blur">
           <Link href="/">
             <p className="select-none font-serif text-2xl font-medium">
               KUK Confessions
             </p>
           </Link>
-          <span className="text-sm font-medium text-gray-700">
+          <span className="text-sm font-medium text-blue-600">
             👥 {chatUsers} online
           </span>
         </header>
@@ -39,8 +39,8 @@ const Page = () => {
           onClick={() => setActiveTab("confessions")}
           className={`cursor-pointer pb-2 ${
             activeTab === "confessions"
-              ? "border-b-4 border-black text-black"
-              : "text-gray-500"
+              ? "border-b-4 border-blue-500 text-blue-600"
+              : "text-white"
           }`}
         >
           Confessions
@@ -49,8 +49,8 @@ const Page = () => {
           onClick={() => setActiveTab("chat")}
           className={`cursor-pointer pb-2 ${
             activeTab === "chat"
-              ? "border-b-4 border-black text-black"
-              : "text-gray-500"
+              ? "border-b-4 border-blue-500 text-blue-600"
+              : "text-white"
           }`}
         >
           Chat Room

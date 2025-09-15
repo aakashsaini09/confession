@@ -109,12 +109,12 @@ const Card = ({ data }: { data: Confession }) => {
   return (
     <>
 
-      <a href="#" className="flex flex-col bg-white border border-gray-900 rounded-lg shadow-sm md:flex-row sm:max-w-lg md:max-w-xl sm:h-36 md:h-52 hover:bg-gray-100">
+      <a href="#" className="flex flex-col bg-[#171717] border border-gray-900 rounded-lg shadow-sm md:flex-row sm:max-w-lg md:max-w-xl sm:h-36 md:h-52 hover:bg-[#1c1c1c]">
         <div className="flex flex-col justify-between p-4 leading-normal">
           <div className='flex items-center gap-3'>
             <Image className='w-14 h-14 bg-transparent border-1 border-black rounded-full' src={img} alt='not found' /><h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Annonymous</h5>
           </div>
-          <p className="min-h-24 py-2 font-normal text-gray-900">
+          <p className="min-h-24 py-2 font-normal text-white">
             {preview}{' '}
             {isLong && (
               <button
