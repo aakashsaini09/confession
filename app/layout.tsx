@@ -2,14 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { EdgeStoreProvider } from '../lib/edgestore';
-import {
-  ClerkProvider,
-  // SignInButton,
-  // SignUpButton,
-  // SignedIn,
-  // SignedOut,
-  // UserButton,
-} from '@clerk/nextjs'
 import { ThemeProvider } from "@/components/theme-provider";
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,7 +25,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <ClerkProvider>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
@@ -59,7 +50,6 @@ export default function RootLayout({
             {children}
           </ThemeProvider></EdgeStoreProvider> 
         </body>
-      </ClerkProvider>
     </html>
   );
 }
